@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using jQuery Selectors and Events</title>
+
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+
+    <style>
+        #hoverBox {
+            width: 250px;
+            padding: 20px;
+            margin-top: 10px;
+            background-color: lightgray;
+            text-align: center;
+        }
+
+        .changed {
+            color: blue;
+            font-weight: bold;
+        }
+
+        .hovered {
+            background-color: lightblue;
+            border: 2px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Using jQuery Selectors and Events</h1>
+
+    <h2>jQuery Events</h2>
+
+    <p id="clickParagraph">Click the button below to change this text.</p>
+
+    <button id="clickButton">Click Me</button>
+
+    <p id="doubleClickParagraph">Double-click this paragraph to change its style.</p>
+
+    <div id="hoverBox">Move your mouse over this box.</div>
+
+    <h2>jQuery Selectors Used</h2>
+
+    <dl>
+        <dt>#clickButton</dt>
+        <dd>The ID selector selects the button with the ID "clickButton". It is used with the click event to change the text of the paragraph.</dd>
+
+        <dt>#doubleClickParagraph</dt>
+        <dd>The ID selector selects the paragraph with the ID "doubleClickParagraph". It is used with the double-click event to change the paragraph style.</dd>
+
+        <dt>#hoverBox</dt>
+        <dd>The ID selector selects the box with the ID "hoverBox". It is used with the hover event to change the appearance of the box.</dd>
+    </dl>
+
+    <script>
+        $(document).ready(function() {
+            $("#clickButton").click(function() {
+                $("#clickParagraph").text("The button was clicked!");
+            });
+
+            $("#doubleClickParagraph").dblclick(function() {
+                $("#doubleClickParagraph").addClass("changed");
+                $("#doubleClickParagraph").text("You double-clicked this paragraph!");
+            });
+
+            $("#hoverBox").hover(
+                function() {
+                    $("#hoverBox").addClass("hovered");
+                    $("#hoverBox").text("You are hovering over the box!");
+                },
+                function() {
+                    $("#hoverBox").removeClass("hovered");
+                    $("#hoverBox").text("Move your mouse over this box.");
+                }
+            );
+        });
+    </script>
+
+</body>
+</html>
